@@ -1,20 +1,27 @@
-// WARNING: This file uses the Supabase service role key.
-// NEVER import this file in client components, browser code, or any file
-// that is bundled for the client. Only use in server-side routes and server actions.
+// Server-only Supabase admin client — bypasses Row Level Security.
+// NEVER import in client components or browser code.
+// Uses a Proxy so the client is created lazily on first use, not at import time.
+// This prevents build failures when env vars are absent during static analysis.
 
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+let _admin: SupabaseClient | null = null;
 
-if (!supabaseUrl || !serviceRoleKey) {
-  throw new Error(
-    "Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY"
-  );
+function getAdmin(): SupabaseClient {
+  if (_admin) return _admin;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) {
+    throw new Error("Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY");
+  }
+  _admin = createClient(url, key, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
+  return _admin;
 }
 
-// Admin Supabase client — bypasses Row Level Security.
-// Must only be used in server-side API routes and server actions.
-export const supabaseAdmin = createClient(supabaseUrl, serviceRoleKey, {
-  auth: { autoRefreshToken: false, persistSession: false },
+export const supabaseAdmin = new Proxy({} as SupabaseClient, {
+  get(_target, prop) {
+    return getAdmin()[prop as keyof SupabaseClient];
+  },
 });
