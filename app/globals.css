@@ -1,26 +1,106 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-black: #050505;
+  --color-brand-charcoal: #0B0B0B;
+  --color-brand-gold: #D6B25E;
+  --color-brand-dark-gold: #A9822B;
+  --color-brand-cream: #F8F4EA;
+  --color-brand-beige: #D8C7A1;
+
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-sans: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand-black: #050505;
+  --brand-charcoal: #0B0B0B;
+  --brand-gold: #D6B25E;
+  --brand-dark-gold: #A9822B;
+  --brand-cream: #F8F4EA;
+  --brand-beige: #D8C7A1;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--brand-cream);
+  color: #1a1a1a;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif-brand {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* Gold shimmer divider */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+}
+.ornament-divider::before,
+.ornament-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #D6B25E, transparent);
+}
+
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #D6B25E 0%, #F0D080 50%, #A9822B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Arabic brand text */
+.arabic-brand {
+  font-family: "Segoe UI", "Arial Unicode MS", sans-serif;
+  direction: rtl;
+}
+
+/* Product image container */
+.product-image-container {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.25s ease-in-out;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #D6B25E;
+  border-radius: 3px;
+}
+
+/* Input focus ring in gold */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #D6B25E40;
+  border-color: #D6B25E !important;
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
