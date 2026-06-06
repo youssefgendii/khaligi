@@ -229,7 +229,7 @@ export default function CheckoutPage() {
       {/* Left column */}
       <div className="flex-1 flex flex-col">
         {/* Top bar */}
-        <div className="border-b border-gray-200 px-6 py-4 flex flex-col gap-3">
+        <div className="border-b border-gray-200 px-4 sm:px-6 py-4 flex flex-col gap-3">
           <Link href="/" className="font-serif-brand text-xl text-[#050505]">
             Al Khalejia
           </Link>
@@ -240,7 +240,7 @@ export default function CheckoutPage() {
         <OrderSummary open={summaryOpen} onToggle={() => setSummaryOpen((v) => !v)} />
 
         {/* Form area */}
-        <div className="flex-1 px-6 py-8 max-w-lg mx-auto w-full">
+        <div className="flex-1 px-4 sm:px-6 py-8 max-w-lg mx-auto w-full">
 
           {/* ── STEP 1: INFORMATION ── */}
           {step === "information" && (
@@ -274,8 +274,8 @@ export default function CheckoutPage() {
                   />
                 </Field>
               </div>
-              <div className="mt-6 flex items-center justify-between">
-                <Link href="/cart" className="text-sm text-[#5C6AC4] hover:underline">← Return to cart</Link>
+              <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <Link href="/cart" className="text-sm text-[#5C6AC4] hover:underline text-center sm:text-left">← Return to cart</Link>
                 <button onClick={nextStep} className={primaryBtn}>Continue to shipping</button>
               </div>
             </div>
@@ -336,8 +336,8 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <div className="mt-6 flex items-center justify-between">
-                <button onClick={() => setStep("information")} className="text-sm text-[#5C6AC4] hover:underline">← Return to information</button>
+              <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <button onClick={() => setStep("information")} className="text-sm text-[#5C6AC4] hover:underline text-center sm:text-left">← Return to information</button>
                 <button onClick={nextStep} className={primaryBtn}>Continue to payment</button>
               </div>
             </div>
@@ -384,8 +384,8 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between">
-                <button onClick={() => setStep("shipping")} className="text-sm text-[#5C6AC4] hover:underline">← Return to shipping</button>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <button onClick={() => setStep("shipping")} className="text-sm text-[#5C6AC4] hover:underline text-center sm:text-left">← Return to shipping</button>
                 <button
                   onClick={handlePlaceOrder}
                   disabled={loading}
@@ -451,7 +451,7 @@ export default function CheckoutPage() {
 
 /* ── helpers ── */
 const primaryBtn =
-  "bg-[#5C6AC4] hover:bg-[#4959BD] text-white font-medium px-6 py-3 text-sm rounded-md transition-colors duration-200 disabled:opacity-60";
+  "w-full sm:w-auto bg-[#5C6AC4] hover:bg-[#4959BD] text-white font-medium px-6 py-3.5 text-sm rounded-md transition-colors duration-200 disabled:opacity-60 touch-manipulation";
 
 function input(error?: string) {
   return `w-full border ${error ? "border-red-400" : "border-gray-300"} rounded-md px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#5C6AC4] focus:border-transparent transition-shadow`;

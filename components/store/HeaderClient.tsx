@@ -24,7 +24,7 @@ export function HeaderClient({ navLinks }: HeaderClientProps) {
     <>
       <div className="lg:hidden">
         <button
-          className="p-1 text-[#D6B25E]"
+          className="p-3 -ml-1 text-[#D6B25E] touch-manipulation"
           onClick={() => setMenuOpen((open) => !open)}
           aria-label="Toggle menu"
         >
@@ -32,22 +32,22 @@ export function HeaderClient({ navLinks }: HeaderClientProps) {
         </button>
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center">
         <Link
           href="/products"
-          className="text-[#D8C7A1] transition-colors hover:text-[#D6B25E]"
+          className="p-3 text-[#D8C7A1] transition-colors hover:text-[#D6B25E] touch-manipulation"
           aria-label="Search products"
         >
           <Search size={20} />
         </Link>
         <Link
           href="/cart"
-          className="relative text-[#D8C7A1] transition-colors hover:text-[#D6B25E]"
+          className="relative p-3 -mr-2 text-[#D8C7A1] transition-colors hover:text-[#D6B25E] touch-manipulation"
           aria-label="Shopping cart"
         >
           <ShoppingBag size={20} />
           {totalItems > 0 && (
-            <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-[#D6B25E] text-[10px] font-bold leading-none text-[#050505]">
+            <span className="absolute right-1 top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#D6B25E] text-[10px] font-bold leading-none text-[#050505]">
               {totalItems > 9 ? "9+" : totalItems}
             </span>
           )}
@@ -55,14 +55,14 @@ export function HeaderClient({ navLinks }: HeaderClientProps) {
       </div>
 
       {menuOpen && (
-        <div className="absolute inset-x-0 top-16 border-t border-[#D6B25E20] bg-[#0B0B0B] px-4 py-4 lg:hidden">
-          <nav className="flex flex-col gap-4">
+        <div className="absolute inset-x-0 top-16 border-t border-[#D6B25E20] bg-[#0B0B0B] px-4 py-2 lg:hidden shadow-2xl">
+          <nav className="flex flex-col">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="border-b border-[#D6B25E10] py-1 text-sm font-medium uppercase tracking-wide text-[#D8C7A1] hover:text-[#D6B25E] last:border-0"
+                className="border-b border-[#D6B25E10] py-4 text-sm font-medium uppercase tracking-wide text-[#D8C7A1] hover:text-[#D6B25E] last:border-0 touch-manipulation"
               >
                 {link.label}
               </Link>

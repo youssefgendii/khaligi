@@ -1,4 +1,4 @@
-export const unstable_instant = { prefetch: "static" };
+export const unstable_instant = { prefetch: "static", unstable_disableValidation: true };
 
 import { Suspense } from "react";
 import Link from "next/link";
@@ -177,28 +177,28 @@ export default function HomePage() {
   return (
     <>
       {/* HERO — static, renders immediately */}
-      <section className="bg-[#050505] py-20 px-4">
+      <section className="bg-[#050505] py-12 sm:py-20 px-4">
         <div className="max-w-2xl mx-auto text-center">
-          <p className="arabic-brand text-[#D6B25E] text-2xl mb-4 opacity-80">
+          <p className="arabic-brand text-[#D6B25E] text-2xl mb-3 opacity-80">
             الخليجية
           </p>
-          <h1 className="font-serif-brand text-4xl sm:text-5xl text-white leading-tight mb-4">
+          <h1 className="font-serif-brand text-3xl sm:text-5xl text-white leading-tight mb-3">
             Gulf-Inspired Fashion
           </h1>
-          <p className="text-[#D8C7A1] opacity-60 text-base mb-8">
+          <p className="text-[#D8C7A1] opacity-60 text-sm sm:text-base mb-7">
             Premium women&apos;s fashion delivered to your door. Cash on delivery.
             No account required.
           </p>
-          <div className="flex flex-wrap gap-3 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
             <Link
               href="/products"
-              className="bg-[#D6B25E] hover:bg-[#A9822B] text-[#050505] font-semibold px-8 py-3 text-sm tracking-wide uppercase transition-colors duration-200"
+              className="w-full sm:w-auto bg-[#D6B25E] hover:bg-[#A9822B] text-[#050505] font-semibold px-8 py-3.5 text-sm tracking-wide uppercase transition-colors duration-200 min-h-[48px] flex items-center justify-center touch-manipulation"
             >
               Shop Collection
             </Link>
             <Link
               href="/products?sort=new"
-              className="border border-[#D6B25E50] text-[#D6B25E] hover:border-[#D6B25E] px-8 py-3 text-sm tracking-wide uppercase transition-colors duration-200"
+              className="w-full sm:w-auto border border-[#D6B25E50] text-[#D6B25E] hover:border-[#D6B25E] px-8 py-3.5 text-sm tracking-wide uppercase transition-colors duration-200 min-h-[48px] flex items-center justify-center touch-manipulation"
             >
               New Arrivals
             </Link>

@@ -147,7 +147,7 @@ export function ProductDetailsClient({ product }: Props) {
                   key={color}
                   onClick={() => setSelectedColor(color)}
                   className={cn(
-                    "px-3 py-1.5 text-sm border rounded transition-all duration-150",
+                    "px-4 py-2.5 text-sm border rounded transition-all duration-150 min-h-[44px] touch-manipulation",
                     selectedColor === color
                       ? "bg-[#050505] text-[#D6B25E] border-[#D6B25E] font-semibold"
                       : "border-gray-300 text-gray-700 hover:border-[#D6B25E]"
@@ -172,7 +172,7 @@ export function ProductDetailsClient({ product }: Props) {
                   key={size}
                   onClick={() => setSelectedSize(size)}
                   className={cn(
-                    "px-3 py-1.5 text-sm border rounded transition-all duration-150 min-w-[44px]",
+                    "px-4 py-2.5 text-sm border rounded transition-all duration-150 min-w-[48px] min-h-[44px] touch-manipulation",
                     selectedSize === size
                       ? "bg-[#050505] text-[#D6B25E] border-[#D6B25E] font-semibold"
                       : "border-gray-300 text-gray-700 hover:border-[#D6B25E]"
@@ -193,18 +193,18 @@ export function ProductDetailsClient({ product }: Props) {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-              className="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:border-[#D6B25E] transition-colors"
+              className="w-11 h-11 border border-gray-300 rounded flex items-center justify-center hover:border-[#D6B25E] transition-colors touch-manipulation"
             >
-              <Minus size={14} />
+              <Minus size={16} />
             </button>
-            <span className="w-8 text-center font-semibold text-[#050505]">
+            <span className="w-10 text-center font-semibold text-[#050505] text-lg">
               {quantity}
             </span>
             <button
               onClick={() => setQuantity((q) => q + 1)}
-              className="w-8 h-8 border border-gray-300 rounded flex items-center justify-center hover:border-[#D6B25E] transition-colors"
+              className="w-11 h-11 border border-gray-300 rounded flex items-center justify-center hover:border-[#D6B25E] transition-colors touch-manipulation"
             >
-              <Plus size={14} />
+              <Plus size={16} />
             </button>
           </div>
         </div>

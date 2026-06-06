@@ -56,11 +56,11 @@ export function ProductCard({ product }: ProductCardProps) {
       <div className="p-3 flex flex-col flex-1 gap-1">
         {/* Brand + Code */}
         <div className="flex items-center justify-between">
-          <span className="text-[10px] text-[#A9822B] tracking-wider uppercase font-medium">
+          <span className="text-xs text-[#A9822B] tracking-wider uppercase font-medium">
             {product.brand_ar}
           </span>
-          <span className="text-[10px] font-bold text-[#050505] bg-[#D6B25E20] px-1.5 py-0.5 rounded tracking-wide">
-            CODE: {product.product_code}
+          <span className="text-xs font-bold text-[#050505] bg-[#D6B25E20] px-1.5 py-0.5 rounded tracking-wide">
+            {product.product_code}
           </span>
         </div>
 
@@ -77,13 +77,13 @@ export function ProductCard({ product }: ProductCardProps) {
             {product.available_sizes.slice(0, 5).map((size) => (
               <span
                 key={size}
-                className="text-[9px] border border-gray-200 px-1.5 py-0.5 text-gray-500 rounded-sm font-medium"
+                className="text-[11px] border border-gray-200 px-1.5 py-0.5 text-gray-500 rounded-sm font-medium"
               >
                 {size}
               </span>
             ))}
             {product.available_sizes.length > 5 && (
-              <span className="text-[9px] text-gray-400">+{product.available_sizes.length - 5}</span>
+              <span className="text-[11px] text-gray-400">+{product.available_sizes.length - 5}</span>
             )}
           </div>
         )}
@@ -103,7 +103,7 @@ export function ProductCard({ product }: ProductCardProps) {
         {/* Add to cart */}
         <Link
           href={`/products/${product.slug}`}
-          className="mt-2 w-full bg-[#050505] hover:bg-[#D6B25E] text-[#D6B25E] hover:text-[#050505] border border-[#D6B25E30] hover:border-[#D6B25E] text-xs font-semibold py-2 flex items-center justify-center gap-1.5 transition-all duration-200 rounded-sm"
+          className="mt-2 w-full bg-[#050505] hover:bg-[#D6B25E] text-[#D6B25E] hover:text-[#050505] border border-[#D6B25E30] hover:border-[#D6B25E] text-xs font-semibold py-3 flex items-center justify-center gap-1.5 transition-all duration-200 rounded-sm touch-manipulation min-h-[44px]"
         >
           <ShoppingBag size={12} />
           Select Options
